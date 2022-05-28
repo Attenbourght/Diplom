@@ -37,7 +37,6 @@ class TabBar: UITabBarController {
     }
 }
 
-// MARK: - перевод цвета из HEX в RGB для UIColor
 extension UIColor {
     convenience init(hex: Int) {
         let components = (
