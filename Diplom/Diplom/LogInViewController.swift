@@ -11,8 +11,11 @@ class LogInViewController: UIViewController {
     
     private let notify = NotificationCenter.default
     
+    private lazy var validationData = ValidationData()
+    
     private let scrollView: UIScrollView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .white
         return $0
     }(UIScrollView())
     
@@ -24,8 +27,8 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationBar.isHidden = true
-        //self.tabBarController?.tabBar.isHidden = true
+        view.backgroundColor = .systemBackground
+        self.navigationController?.navigationBar.isHidden = true
         setupLayout()
     }
     
@@ -80,13 +83,9 @@ class LogInViewController: UIViewController {
         // $0.layer.borderWidth = 0.5 // Задаем в stackView
         // $0.layer.borderColor = UIColor.lightGray.cgColor // Задаем в stackView
         $0.delegate = self
-        $0.addTarget(self, action: #selector(userLogin), for: .editingChanged)
+        $0.addTarget(self, action: #selector(logInButtonAction), for: .editingChanged)
         return $0
     }(UITextField())
-    
-    @objc private func userLogin() {
-        
-    }
     
     private lazy var userPasswordTextField: UITextField = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -99,12 +98,10 @@ class LogInViewController: UIViewController {
         // $0.layer.borderWidth = 0.5 // Задаем в stackView
         // $0.layer.borderColor = UIColor.lightGray.cgColor // Задаем в stackView
         $0.delegate = self
-        $0.addTarget(self, action: #selector(userPassword), for: .editingChanged)
+        $0.addTarget(self, action: #selector(logInButtonAction), for: .editingChanged)
         return $0
     }(UITextField())
     
-    @objc private func userPassword() {
-    }
     
     private lazy var logInButton: UIButton = {
         let colorButton = UIColor(patternImage: UIImage(named: "blue_pixel.png")!)
@@ -122,15 +119,97 @@ class LogInViewController: UIViewController {
     }(UIButton())
     
     @objc private func logInButtonAction() {
-        let profileView = ProfileViewController()
-        self.navigationController?.pushViewController(profileView, animated: true)
-        self.navigationController?.setViewControllers([profileView], animated: true)
-
+        
+        guard let enteredEmail = userLoginTextField.text else {return}
+        guard let enteredPassword = userPasswordTextField.text else {return}
+        
+        let login = validEmail(email: enteredEmail)
+        let password = validPassword(password: enteredPassword)
+        
+        if enteredEmail.isEmpty && enteredPassword.isEmpty {
+            userLoginTextField.shakeTextField(textField: userLoginTextField)
+            userPasswordTextField.shakeTextField(textField: userPasswordTextField)
+        } else if enteredEmail.isEmpty {
+            userLoginTextField.shakeTextField(textField: userLoginTextField)
+        } else if enteredPassword.isEmpty {
+            userPasswordTextField.shakeTextField(textField: userPasswordTextField)
+        } else {
+            if !password && !login {
+                invalidDataLabel.text = validationData.invalidEmailAndPassword
+                invalidDataLabel.textAlignment = .center
+                invalidDataLabel.isHidden = false
+                userPasswordTextField.shakeTextField(textField: userPasswordTextField)
+                userLoginTextField.shakeTextField(textField: userLoginTextField)
+            } else if !password {
+                invalidDataLabel.text = validationData.invalidPasswordText
+                invalidDataLabel.textAlignment = .left
+                invalidDataLabel.isHidden = false
+                userPasswordTextField.shakeTextField(textField: userPasswordTextField)
+            } else if !login {
+                invalidDataLabel.text = validationData.invalidEmailText
+                invalidDataLabel.textAlignment = .center
+                invalidDataLabel.isHidden = false
+                userLoginTextField.shakeTextField(textField: userLoginTextField)
+            } else if !login {
+                invalidDataLabel.text = validationData.invalidEmailText
+                invalidDataLabel.textAlignment = .center
+                invalidDataLabel.isHidden = false
+                userLoginTextField.shakeTextField(textField: userLoginTextField)
+            } else {
+                if userLoginTextField.text != validationData.defaultLogin || userPasswordTextField.text != validationData.defaultPassword {
+                    logInAlert()
+                } else {
+                    let profileView = ProfileViewController()
+                    self.navigationController?.pushViewController(profileView, animated: true)
+                    self.navigationController?.setViewControllers([profileView], animated: true)
+                }
+            }
+        }
+        
+        
+    }
+    
+    private func logInAlert() {
+        let alert = UIAlertController(title: "Error..", message: "Login or password is not correct", preferredStyle: .alert)
+        let okAlert = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(okAlert)
+        present(alert, animated: true)
+    }
+    
+    private lazy var invalidDataLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 12)
+        label.numberOfLines = 8
+        label.contentMode = .scaleToFill
+        label.isHidden = true
+        return label
+    }()
+    
+    private func validEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let validEmail = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return validEmail.evaluate(with: email)
+    }
+    
+    private func validPassword(password : String) -> Bool {
+        let passwordReg =  ("(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}")
+        let passwordTesting = NSPredicate(format: "SELF MATCHES %@", passwordReg)
+        return passwordTesting.evaluate(with: password) && password.count > 6
+    }
+    
+    private func longPassword(password : String) -> Bool {
+        return password.count > 6
+        
     }
     
     private func setupLayout() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        [scrollView].forEach { view.addSubview($0) }
+        [contentView].forEach { scrollView.addSubview($0) }
+
         
         NSLayoutConstraint.activate([
             // scrollView
@@ -176,7 +255,6 @@ class LogInViewController: UIViewController {
     }
     
 }
-// MARK: - UITextFieldDelegate
 
 extension LogInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

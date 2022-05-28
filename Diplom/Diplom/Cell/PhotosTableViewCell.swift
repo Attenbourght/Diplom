@@ -9,9 +9,13 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
     
+    weak var delegate: PhotosTableViewDelegate?
+    
     private let photosView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .white
+        $0.isUserInteractionEnabled = false
+        
         return $0
     }(UIView())
     
@@ -30,6 +34,7 @@ class PhotosTableViewCell: UITableViewCell {
         $0.contentMode = .scaleAspectFit
         $0.sizeToFit()
         $0.clipsToBounds = false
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIImageView())
     
@@ -46,33 +51,37 @@ class PhotosTableViewCell: UITableViewCell {
         return $0
     }(UIStackView())
     
-    private var firstImageView: UIImageView = {
+    private lazy var firstImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "1")
         $0.backgroundColor = .black
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 6
         $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+        
         return $0
     }(UIImageView())
     
-    private var secondImageView: UIImageView = {
+    private lazy var secondImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "2")
         $0.backgroundColor = .black
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 6
         $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIImageView())
     
-    private var thirdImageView: UIImageView = {
+    private lazy var thirdImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "3")
         $0.backgroundColor = .black
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 6
         $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIImageView())
     
@@ -83,6 +92,7 @@ class PhotosTableViewCell: UITableViewCell {
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 6
         $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIImageView())
     
@@ -93,11 +103,23 @@ class PhotosTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
         customizeCell()
+        setupGestures()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupGestures() {
+        let tapRightArrowGesture = UITapGestureRecognizer(target: self, action: #selector(rightArrowImageAction))
+        rightArrowImageView.addGestureRecognizer(tapRightArrowGesture)
+    }
+    
+    @objc func rightArrowImageAction() {
+        delegate?.rightArrowImagePressed()
+    }
+    
     
     private func customizeCell() {
         photosView.layer.cornerRadius = 0

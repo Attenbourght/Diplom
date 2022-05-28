@@ -25,6 +25,15 @@
 		9931E839284220E600688C0F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931E838284220E600688C0F /* PhotosCollectionViewCell.swift */; };
 		9931E83B2842210B00688C0F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931E83A2842210B00688C0F /* Post.swift */; };
 		9931E83D2842211F00688C0F /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931E83C2842211F00688C0F /* Photos.swift */; };
+		99BF040928422ACE00C9950B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF040828422ACE00C9950B /* Login.swift */; };
+		99BF040B28422BD000C9950B /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF040A28422BD000C9950B /* DetailPostViewController.swift */; };
+		99BF040E28422C6000C9950B /* TextFiedldAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF040D28422C6000C9950B /* TextFiedldAnimation.swift */; };
+		99BF041028422C8700C9950B /* UIcolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF040F28422C8700C9950B /* UIcolor.swift */; };
+		99BF041228423F8900C9950B /* PhotosTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF041128423F8900C9950B /* PhotosTableViewCellDelegate.swift */; };
+		99BF041428423FB400C9950B /* ProfileHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF041328423FB400C9950B /* ProfileHeaderViewDelegate.swift */; };
+		99BF04182842403200C9950B /* DetailPostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF04172842403200C9950B /* DetailPostViewDelegate.swift */; };
+		99BF041A2842405700C9950B /* ProfileViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF04192842405700C9950B /* ProfileViewControllerDataSource.swift */; };
+		99BF041C2842494400C9950B /* PostTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF041B2842494400C9950B /* PostTableViewCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,15 @@
 		9931E838284220E600688C0F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		9931E83A2842210B00688C0F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9931E83C2842211F00688C0F /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		99BF040828422ACE00C9950B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		99BF040A28422BD000C9950B /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		99BF040D28422C6000C9950B /* TextFiedldAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiedldAnimation.swift; sourceTree = "<group>"; };
+		99BF040F28422C8700C9950B /* UIcolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIcolor.swift; sourceTree = "<group>"; };
+		99BF041128423F8900C9950B /* PhotosTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		99BF041328423FB400C9950B /* ProfileHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewDelegate.swift; sourceTree = "<group>"; };
+		99BF04172842403200C9950B /* DetailPostViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewDelegate.swift; sourceTree = "<group>"; };
+		99BF04192842405700C9950B /* ProfileViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDataSource.swift; sourceTree = "<group>"; };
+		99BF041B2842494400C9950B /* PostTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,18 +99,26 @@
 			isa = PBXGroup;
 			children = (
 				9931E81C28421C9B00688C0F /* ExtensionUIView.swift */,
+				99BF040D28422C6000C9950B /* TextFiedldAnimation.swift */,
+				99BF040F28422C8700C9950B /* UIcolor.swift */,
 				9931E81F28421CC300688C0F /* Cell */,
 				9931E81E28421CBB00688C0F /* Model */,
 				9931E82228421E2700688C0F /* Profile */,
-				9931E82528421F1600688C0F /* InfoViewController.swift */,
-				9931E82B28421FAB00688C0F /* PostViewController.swift */,
-				9931E82728421F4300688C0F /* LogInViewController.swift */,
+				9931E82928421F7500688C0F /* FeedViewController.swift */,
+				99BF040828422ACE00C9950B /* Login.swift */,
 				9931E80A28421C3900688C0F /* SceneDelegate.swift */,
 				9931E82328421E7E00688C0F /* Tabbar.swift */,
+				9931E82528421F1600688C0F /* InfoViewController.swift */,
+				9931E82728421F4300688C0F /* LogInViewController.swift */,
 				9931E80828421C3900688C0F /* AppDelegate.swift */,
 				9931E81128421C3A00688C0F /* Assets.xcassets */,
 				9931E81328421C3A00688C0F /* LaunchScreen.storyboard */,
 				9931E81628421C3A00688C0F /* Info.plist */,
+				99BF041128423F8900C9950B /* PhotosTableViewCellDelegate.swift */,
+				99BF041328423FB400C9950B /* ProfileHeaderViewDelegate.swift */,
+				99BF04172842403200C9950B /* DetailPostViewDelegate.swift */,
+				99BF041B2842494400C9950B /* PostTableViewCellDelegate.swift */,
+				99BF04192842405700C9950B /* ProfileViewControllerDataSource.swift */,
 			);
 			path = Diplom;
 			sourceTree = "<group>";
@@ -119,10 +145,11 @@
 		9931E82228421E2700688C0F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				9931E82928421F7500688C0F /* FeedViewController.swift */,
 				9931E82D28421FD100688C0F /* PhotosViewController.swift */,
-				9931E82F28421FFA00688C0F /* ProfileViewController.swift */,
+				9931E82B28421FAB00688C0F /* PostViewController.swift */,
 				9931E8312842202600688C0F /* ProfileHeaderView.swift */,
+				9931E82F28421FFA00688C0F /* ProfileViewController.swift */,
+				99BF040A28422BD000C9950B /* DetailPostViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -198,20 +225,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				9931E82E28421FD100688C0F /* PhotosViewController.swift in Sources */,
+				99BF040E28422C6000C9950B /* TextFiedldAnimation.swift in Sources */,
+				99BF040928422ACE00C9950B /* Login.swift in Sources */,
 				9931E839284220E600688C0F /* PhotosCollectionViewCell.swift in Sources */,
 				9931E82C28421FAB00688C0F /* PostViewController.swift in Sources */,
 				9931E8322842202600688C0F /* ProfileHeaderView.swift in Sources */,
+				99BF040B28422BD000C9950B /* DetailPostViewController.swift in Sources */,
 				9931E83D2842211F00688C0F /* Photos.swift in Sources */,
+				99BF041428423FB400C9950B /* ProfileHeaderViewDelegate.swift in Sources */,
 				9931E83028421FFA00688C0F /* ProfileViewController.swift in Sources */,
+				99BF041028422C8700C9950B /* UIcolor.swift in Sources */,
 				9931E80928421C3900688C0F /* AppDelegate.swift in Sources */,
 				9931E81D28421C9B00688C0F /* ExtensionUIView.swift in Sources */,
 				9931E82828421F4300688C0F /* LogInViewController.swift in Sources */,
 				9931E80B28421C3900688C0F /* SceneDelegate.swift in Sources */,
 				9931E83B2842210B00688C0F /* Post.swift in Sources */,
 				9931E82428421E7E00688C0F /* Tabbar.swift in Sources */,
+				99BF041C2842494400C9950B /* PostTableViewCellDelegate.swift in Sources */,
 				9931E8362842207F00688C0F /* PhotosTableViewCell.swift in Sources */,
 				9931E82628421F1600688C0F /* InfoViewController.swift in Sources */,
+				99BF041228423F8900C9950B /* PhotosTableViewCellDelegate.swift in Sources */,
 				9931E82A28421F7500688C0F /* FeedViewController.swift in Sources */,
+				99BF041A2842405700C9950B /* ProfileViewControllerDataSource.swift in Sources */,
+				99BF04182842403200C9950B /* DetailPostViewDelegate.swift in Sources */,
 				9931E8342842205C00688C0F /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +394,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,6 +422,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
